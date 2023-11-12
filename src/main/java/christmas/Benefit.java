@@ -22,6 +22,6 @@ public class Benefit {
     }
 
     private int getSpecialDayDiscount(boolean isSpecialDay) {
-        return Boolean.hashCode(isSpecialDay) * 1000;
+        return Boolean.compare(isSpecialDay, false) * 1000;
     }
 }
