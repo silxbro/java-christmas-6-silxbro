@@ -6,6 +6,10 @@ import java.time.LocalDate;
 public class VisitDate {
     private final LocalDate visitDate;
 
+    public LocalDate getVisitDate() {
+        return visitDate;
+    }
+
     public VisitDate(int day) {
         this.visitDate = LocalDate.of(2023, 12, day);
     }
@@ -26,7 +30,7 @@ public class VisitDate {
         if (visitDate.getDayOfWeek() == DayOfWeek.SUNDAY) {
             return true;
         }
-        if (visitDate == LocalDate.of(2023, 12, 25)) {
+        if (visitDate.equals(LocalDate.of(2023, 12, 25))) {
             return true;
         }
         return false;
