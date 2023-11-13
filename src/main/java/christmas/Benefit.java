@@ -2,26 +2,33 @@ package christmas;
 
 import java.util.Map;
 
+import static christmas.DayType.*;
+import static christmas.Discount.*;
+import static christmas.MenuType.*;
+import static christmas.VisitDate.*;
+
 public class Benefit {
 
     public int getTotalDiscount(VisitDate date, Map<String, Integer> categoryFrequency) {
-        return getIncreasingXmasDiscount(date.getDay())
-                + getDayOfWeekDiscount(date.isWeekend(), categoryFrequency)
-                + getSpecialDayDiscount(date.isSpecialDay());
+        return getDdayXmasDiscount(date.getDay())
+                + getDayTypeDiscount(date.getDayType(), categoryFrequency)
+                + getSpecialDiscount(date.hasStar());
     }
-
-    private int getIncreasingXmasDiscount(int day) {
-        return 1000 + (day - 1) * 100;
-    }
-
-    private int getDayOfWeekDiscount(boolean isWeekend, Map<String, Integer> categoryFrequency) {
-        if (isWeekend) {
-            return categoryFrequency.get("MAIN") * 2023;
+    private int getDdayXmasDiscount(int day) {
+        if (day <= CHRISTMAS.getDayOfMonth()) {
+            return XMAS_MIN.getAmount() + (day - 1) * XMAS_UNIT.getAmount();
         }
-        return categoryFrequency.get("DESERT") * 2023;
+        return 0;
     }
 
-    private int getSpecialDayDiscount(boolean isSpecialDay) {
-        return Boolean.compare(isSpecialDay, false) * 1000;
+    private int getDayTypeDiscount(DayType dayType, Map<String, Integer> categoryFrequency) {
+        if (dayType == WEEKEND) {
+            return categoryFrequency.get(MAIN) * DAYTYPE_UNIT.getAmount();
+        }
+        return categoryFrequency.get(DESERT) * DAYTYPE_UNIT.getAmount();
+    }
+
+    private int getSpecialDiscount(boolean hasStar) {
+        return Boolean.compare(hasStar, false) * SPECIAL.getAmount();
     }
 }

@@ -4,36 +4,30 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class VisitDate {
+    private static final int EVENT_YEAR = 2023;
+    private static final int EVENT_MONTH = 12;
+    public static final LocalDate CHRISTMAS = LocalDate.of(EVENT_YEAR, EVENT_MONTH, 25);
+
     private final LocalDate visitDate;
 
-    public LocalDate getVisitDate() {
-        return visitDate;
-    }
-
     public VisitDate(int day) {
-        this.visitDate = LocalDate.of(2023, 12, day);
+        this.visitDate = LocalDate.of(EVENT_YEAR, EVENT_MONTH, day);
     }
 
     public int getDay() {
         return visitDate.getDayOfMonth();
     }
 
-    public boolean isWeekend() {
-        DayOfWeek dayOfWeek = visitDate.getDayOfWeek();
-        if (dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY) {
-            return true;
+    public DayType getDayType() {
+        if (visitDate.getDayOfWeek() == DayOfWeek.FRIDAY || visitDate.getDayOfWeek() == DayOfWeek.SATURDAY) {
+            return DayType.WEEKEND;
         }
-        return false;
+        return DayType.WEEKDAY;
     }
 
-    public boolean isSpecialDay() {
-        if (visitDate.getDayOfWeek() == DayOfWeek.SUNDAY) {
-            return true;
-        }
-        if (visitDate.equals(LocalDate.of(2023, 12, 25))) {
-            return true;
-        }
-        return false;
+    public boolean hasStar() {
+        return (visitDate.getDayOfWeek() == DayOfWeek.SUNDAY
+                || visitDate.equals(CHRISTMAS));
     }
 
 }
