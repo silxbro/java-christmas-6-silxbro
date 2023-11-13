@@ -1,5 +1,7 @@
 package christmas;
 
+import christmas.constant.DayType;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 

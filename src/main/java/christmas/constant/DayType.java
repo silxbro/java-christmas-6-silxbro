@@ -1,4 +1,4 @@
-package christmas;
+package christmas.constant;
 
 public enum DayType {
     WEEKDAY("평일"),

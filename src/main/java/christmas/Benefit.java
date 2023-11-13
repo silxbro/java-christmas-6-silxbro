@@ -1,10 +1,12 @@
 package christmas;
 
+import christmas.constant.DayType;
+
 import java.util.Map;
 
-import static christmas.DayType.*;
-import static christmas.Discount.*;
-import static christmas.MenuType.*;
+import static christmas.constant.DayType.*;
+import static christmas.constant.Discount.*;
+import static christmas.constant.MenuType.*;
 import static christmas.VisitDate.*;
 
 public class Benefit {

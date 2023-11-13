@@ -1,4 +1,4 @@
-package christmas;
+package christmas.constant;
 
 public enum Discount {
     XMAS_MIN(1000),
