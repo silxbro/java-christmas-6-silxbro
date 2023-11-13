@@ -1,10 +1,11 @@
 package christmas;
 
+import christmas.domain.Benefit;
+import christmas.domain.VisitDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package christmas;
+package christmas.domain;
 
 import christmas.constant.DayType;
 
@@ -7,7 +7,7 @@ import java.util.Map;
 import static christmas.constant.DayType.*;
 import static christmas.constant.Discount.*;
 import static christmas.constant.MenuType.*;
-import static christmas.VisitDate.*;
+import static christmas.domain.VisitDate.*;
 
 public class Benefit {
 
