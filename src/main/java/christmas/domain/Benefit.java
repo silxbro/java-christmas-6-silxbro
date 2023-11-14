@@ -18,7 +18,6 @@ public class Benefit {
         return 0;
     }
 
-
     public int getDdayXmasDiscount(VisitDate date) {
         if (!date.isAfterXmas()) {
             return XMAS_DISCOUNT_MIN.getAmount() + date.getDaysSinceDecember1st() * XMAS_DISCOUNT_UNIT.getAmount();
