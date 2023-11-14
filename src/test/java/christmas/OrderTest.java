@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static christmas.constant.Menu.*;
-import static christmas.constant.MenuType.*;
+import static christmas.constant.MenuCategory.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class OrderTest {

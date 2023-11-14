@@ -35,7 +35,7 @@ public class Benefit {
 
     public int getWeekendDiscount(boolean isWeekend, Order order) {
         if (isWeekend) {
-            return order.getMenuTypeCount(MAIN) * WEEKEND_DISCOUNT_UNIT.getAmount()
+            return order.getMenuTypeCount(MAIN) * WEEKEND_DISCOUNT_UNIT.getAmount();
         }
         return 0;
     }
