@@ -1,5 +1,7 @@
 package christmas.constant;
 
+import java.util.Arrays;
+
 import static christmas.constant.MenuCategory.*;
 
 public enum Menu {

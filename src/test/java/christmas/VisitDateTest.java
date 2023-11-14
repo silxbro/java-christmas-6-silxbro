@@ -9,19 +9,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class VisitDateTest {
 
-    @DisplayName("of 메소드 사용시 해당 VisitDate 상수 반환")
-    @ParameterizedTest
-    @CsvSource(value = {"3:DAY_3", "10:DAY_10", "17:DAY_17", "25:CHRISTMAS", "31:DAY_31"}, delimiter = ':')
-    void of_test(int input, VisitDate expected) {
-        VisitDate actualValue = VisitDate.of(input);
-        assertEquals(expected, actualValue);
-    }
-
     @DisplayName("isAfterXmas 메소드 사용시 크리스마스 이후 날짜 여부 반환")
     @ParameterizedTest
     @CsvSource(value = {"10:false", "25:false", "27:true", "31:true"}, delimiter = ':')
     void isAfterXmas_test(int input, boolean expected) {
-        VisitDate visitDate = VisitDate.of(input);
+        VisitDate visitDate = new VisitDate(input);
         boolean actualValue = visitDate.isAfterXmas();
         assertEquals(expected, actualValue);
     }
@@ -30,7 +22,7 @@ public class VisitDateTest {
     @ParameterizedTest
     @CsvSource(value = {"1:0", "10:9", "20:19", "25:24", "30:29"}, delimiter = ':')
     void getDaysSinceDecember1st_test(int input, int expected) {
-        VisitDate visitDate = VisitDate.of(input);
+        VisitDate visitDate = new VisitDate(input);
         int actualValue = visitDate.getDaysSinceDecember1st();
         assertEquals(expected, actualValue);
     }
@@ -39,7 +31,7 @@ public class VisitDateTest {
     @ParameterizedTest
     @CsvSource(value = {"8:true", "12:false", "16:true", "20:false", "25:false"}, delimiter = ':')
     void isWeekend_test(int input, boolean expected) {
-        VisitDate visitDate = VisitDate.of(input);
+        VisitDate visitDate = new VisitDate(input);
         boolean actualValue = visitDate.isWeekend();
         assertEquals(expected, actualValue);
     }
@@ -48,7 +40,7 @@ public class VisitDateTest {
     @ParameterizedTest
     @CsvSource(value = {"5:false", "10:true", "15:false", "25:true", "30:false"}, delimiter = ':')
     void hasStar_test(int input, boolean expected) {
-        VisitDate visitDate = VisitDate.of(input);
+        VisitDate visitDate = new VisitDate(input);
         boolean actualValue = visitDate.hasStar();
         assertEquals(expected, actualValue);
     }

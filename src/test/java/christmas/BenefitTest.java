@@ -41,23 +41,23 @@ public class BenefitTest {
     @DisplayName("getTotalBenefit 메소드 사용시 총혜택 금액 리턴")
     @Test
     void getTotalBenefit_test() {
-        assertEquals(new Benefit().getTotalBenefit(VisitDate.of(3), new Order(menuBoard1)), 2200);
-        assertEquals(new Benefit().getTotalBenefit(VisitDate.of(5), new Order(menuBoard1)), 1400);
-        assertEquals(new Benefit().getTotalBenefit(VisitDate.of(9), new Order(menuBoard1)), 5846);
-        assertEquals(new Benefit().getTotalBenefit(VisitDate.of(12), new Order(menuBoard2)), 31146);
-        assertEquals(new Benefit().getTotalBenefit(VisitDate.of(15), new Order(menuBoard2)), 35492);
-        assertEquals(new Benefit().getTotalBenefit(VisitDate.of(17), new Order(menuBoard2)), 32646);
-        assertEquals(new Benefit().getTotalBenefit(VisitDate.of(22), new Order(menuBoard3)), 0);
-        assertEquals(new Benefit().getTotalBenefit(VisitDate.of(25), new Order(menuBoard2)), 33446);
-        assertEquals(new Benefit().getTotalBenefit(VisitDate.of(28), new Order(menuBoard1)), 0);
-        assertEquals(new Benefit().getTotalBenefit(VisitDate.of(31), new Order(menuBoard2)), 30046);
+        assertEquals(new Benefit().getTotalBenefit(new VisitDate(3), new Order(menuBoard1)), 2200);
+        assertEquals(new Benefit().getTotalBenefit(new VisitDate(5), new Order(menuBoard1)), 1400);
+        assertEquals(new Benefit().getTotalBenefit(new VisitDate(9), new Order(menuBoard1)), 5846);
+        assertEquals(new Benefit().getTotalBenefit(new VisitDate(12), new Order(menuBoard2)), 31146);
+        assertEquals(new Benefit().getTotalBenefit(new VisitDate(15), new Order(menuBoard2)), 35492);
+        assertEquals(new Benefit().getTotalBenefit(new VisitDate(17), new Order(menuBoard2)), 32646);
+        assertEquals(new Benefit().getTotalBenefit(new VisitDate(22), new Order(menuBoard3)), 0);
+        assertEquals(new Benefit().getTotalBenefit(new VisitDate(25), new Order(menuBoard2)), 33446);
+        assertEquals(new Benefit().getTotalBenefit(new VisitDate(28), new Order(menuBoard1)), 0);
+        assertEquals(new Benefit().getTotalBenefit(new VisitDate(31), new Order(menuBoard2)), 30046);
     }
 
     @DisplayName("getDdayXmasDiscount 메소드 사용시 크리스마스 디데이 할인 금액 리턴")
     @ParameterizedTest
     @CsvSource(value = {"1:1000", "11:2000", "25:3400", "29:0"}, delimiter = ':')
     void getDdayXmasDiscount_test(int input, int expected) {
-        int actualValue = new Benefit().getDdayXmasDiscount(VisitDate.of(input));
+        int actualValue = new Benefit().getDdayXmasDiscount(new VisitDate(input));
         assertEquals(expected, actualValue);
     }
 
