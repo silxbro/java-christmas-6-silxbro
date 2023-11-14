@@ -1,6 +1,6 @@
 package christmas.constant;
 
-import static christmas.constant.MenuType.*;
+import static christmas.constant.MenuCategory.*;
 
 public enum Menu {
     MUSHROOM_SOUP(APPETIZER, "양송이수프", 6_000),
@@ -16,17 +16,17 @@ public enum Menu {
     RED_WINE(DRINK, "레드와인", 60_000),
     CHAMPAGNE(DRINK, "샴페인", 25_000);
 
-    private final MenuType type;
+    private final MenuCategory type;
     private final String name;
     private final int price;
 
-    Menu(MenuType type, String name, int price) {
+    Menu(MenuCategory type, String name, int price) {
         this.type = type;
         this.name = name;
         this.price = price;
     }
 
-    public MenuType getType() {
+    public MenuCategory getType() {
         return this.type;
     }
 
