@@ -27,19 +27,19 @@ public enum VisitDate {
                 .orElseThrow(() -> new IllegalArgumentException());
     }
 
+    public boolean isAfterXmas() {
+        return date.isAfter(CHRISTMAS.date);
+    }
+
+    public int getDaysSinceDecember1st() {
+        return (int) ChronoUnit.DAYS.between(DAY_1.date, date);
+    }
+
     public boolean isWeekend() {
         return (date.getDayOfWeek() == DayOfWeek.FRIDAY || date.getDayOfWeek() == DayOfWeek.SATURDAY);
     }
 
     public boolean hasStar() {
         return (date.getDayOfWeek() == DayOfWeek.SUNDAY || date.equals(CHRISTMAS.date));
-    }
-
-    public boolean isAfterXmas() {
-        return date.isAfter(CHRISTMAS.date);
-    }
-
-    public int getDaysSinceDecember1st() {
-        return (int) ChronoUnit.DAYS.between(date, DAY_1.date);
     }
 }
