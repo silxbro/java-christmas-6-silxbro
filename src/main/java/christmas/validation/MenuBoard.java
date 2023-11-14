@@ -1,4 +1,4 @@
-package validation;
+package christmas.validation;
 
 import christmas.constant.Error;
 import christmas.constant.Menu;

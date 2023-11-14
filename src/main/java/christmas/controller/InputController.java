@@ -2,8 +2,8 @@ package christmas.controller;
 
 import christmas.constant.Menu;
 import christmas.view.InputView;
-import validation.DayNumber;
-import validation.MenuBoard;
+import christmas.validation.DayNumber;
+import christmas.validation.MenuBoard;
 
 import java.util.Map;
 
