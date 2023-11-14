@@ -28,14 +28,14 @@ public class Benefit {
 
     public int getWeekdayDiscount(boolean isWeekend, Order order) {
         if (!isWeekend) {
-            return order.getMenuTypeCount(DESERT) * WEEKDAY_DISCOUNT_UNIT.getAmount();
+            return order.getMenuCategoryCount(DESERT) * WEEKDAY_DISCOUNT_UNIT.getAmount();
         }
         return 0;
     }
 
     public int getWeekendDiscount(boolean isWeekend, Order order) {
         if (isWeekend) {
-            return order.getMenuTypeCount(MAIN) * WEEKEND_DISCOUNT_UNIT.getAmount();
+            return order.getMenuCategoryCount(MAIN) * WEEKEND_DISCOUNT_UNIT.getAmount();
         }
         return 0;
     }

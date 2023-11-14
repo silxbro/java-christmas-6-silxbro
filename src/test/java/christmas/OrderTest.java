@@ -50,9 +50,9 @@ public class OrderTest {
     @DisplayName("getMenuTypeCount 메소드 사용시 해당 메뉴타입의 개수 리턴")
     @Test
     void getMenuTypeCount_test() {
-        assertEquals(new Order(menuBoard1).getMenuTypeCount(MAIN),2);
-        assertEquals(new Order(menuBoard2).getMenuTypeCount(DESERT),0);
-        assertEquals(new Order(menuBoard3).getMenuTypeCount(APPETIZER),3);
+        assertEquals(new Order(menuBoard1).getMenuCategoryCount(MAIN),2);
+        assertEquals(new Order(menuBoard2).getMenuCategoryCount(DESERT),0);
+        assertEquals(new Order(menuBoard3).getMenuCategoryCount(APPETIZER),3);
     }
 
     @DisplayName("getTotalAmount 메소드 사용시 총주문 금액 리턴")

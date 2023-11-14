@@ -20,7 +20,7 @@ public class Order {
                 .sum();
     }
 
-    public int getMenuTypeCount(MenuCategory menuCategory) {
+    public int getMenuCategoryCount(MenuCategory menuCategory) {
         return menuBoard.entrySet().stream()
                 .filter(entry -> entry.getKey().getType() == menuCategory)
                 .mapToInt(Map.Entry::getValue)
