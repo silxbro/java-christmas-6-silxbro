@@ -1,7 +1,11 @@
 package christmas.controller;
 
+import christmas.constant.Menu;
 import christmas.view.InputView;
 import validation.DayNumber;
+import validation.MenuBoard;
+
+import java.util.Map;
 
 public class InputController {
     private final InputView inputView = new InputView();
@@ -12,6 +16,15 @@ public class InputController {
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
             return getDayNumber();
+        }
+    }
+
+    public Map<Menu, Integer> getMenuBoard() {
+        try {
+            return MenuBoard.validate(inputView.readOrder());
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            return getMenuBoard();
         }
     }
 }

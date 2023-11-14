@@ -15,4 +15,9 @@ public class InputView {
             throw new IllegalArgumentException(Error.INVALID_DATE.getMessage());
         }
     }
+
+    public String readOrder() {
+        System.out.println(ORDER_MESSAGE);
+        return Console.readLine();
+    }
 }

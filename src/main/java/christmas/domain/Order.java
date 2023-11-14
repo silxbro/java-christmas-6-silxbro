@@ -14,12 +14,6 @@ public class Order {
         this.menuBoard = menuBoard;
     }
 
-    public int getTotalCount() {
-        return menuBoard.values().stream()
-                .mapToInt(Integer::intValue)
-                .sum();
-    }
-
     public int getMenuCategoryCount(MenuCategory menuCategory) {
         return menuBoard.entrySet().stream()
                 .filter(entry -> entry.getKey().getType() == menuCategory)
