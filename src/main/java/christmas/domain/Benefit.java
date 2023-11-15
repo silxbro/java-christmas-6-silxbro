@@ -1,54 +1,75 @@
 package christmas.domain;
 
-import static christmas.constant.Amount.*;
+import christmas.constant.Discount;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static christmas.constant.Discount.*;
 import static christmas.constant.MenuCategory.*;
 
 public class Benefit {
+    private final VisitDate date;
+    private final Order order;
 
-    public int getTotalBenefit(VisitDate date, Order order) {
-        int ddayXmasDiscount = getDdayXmasDiscount(date);
-        int weekdayDiscount = getWeekdayDiscount(date.isWeekend(), order);
-        int weekendDiscount = getWeekendDiscount(date.isWeekend(), order);
-        int specialDiscount = getSpecialDiscount(date.hasStar());
-        int giftAmount = getGiftAmount(order.canGetGift());
+    public Benefit(VisitDate date, Order order) {
+        this.date = date;
+        this.order = order;
+    }
 
+    public int getTotalBenefit() {
         if (order.canGetBenefit()) {
-            return ddayXmasDiscount + weekdayDiscount + weekendDiscount + specialDiscount + giftAmount;
+            return getDdayXmasDiscount() + getWeekdayDiscount() + getWeekendDiscount() + getSpecialDiscount() + getGiftAmount();
         }
         return 0;
     }
 
-    public int getDdayXmasDiscount(VisitDate date) {
+    public int getBenefitedTotalAmount() {
+        return order.getTotalAmount() - getTotalBenefit();
+    }
+
+    public Map<Discount, Integer> getBenefitBoard() {
+        Map<Discount, Integer> board = new HashMap<>();
+        board.put(XMAS, getDdayXmasDiscount());
+        board.put(WEEKDAY, getWeekdayDiscount());
+        board.put(WEEKEND, getWeekendDiscount());
+        board.put(SPECIAL, getSpecialDiscount());
+        board.put(GIFT, getGiftAmount());
+
+        return board;
+    }
+
+    private int getDdayXmasDiscount() {
         if (!date.isAfterXmas()) {
-            return XMAS_DISCOUNT_MIN.getAmount() + date.getDaysSinceDecember1st() * XMAS_DISCOUNT_UNIT.getAmount();
+            return XMAS.getInitialAmount() + date.getDaysSinceDecember1st() * XMAS.getUnitAmount();
         }
         return 0;
     }
 
-    public int getWeekdayDiscount(boolean isWeekend, Order order) {
-        if (!isWeekend) {
-            return order.getMenuCategoryCount(DESERT) * WEEKDAY_DISCOUNT_UNIT.getAmount();
+    private int getWeekdayDiscount() {
+        if (!date.isWeekend()) {
+            return order.getCategoryCount(DESERT) * WEEKDAY.getUnitAmount();
         }
         return 0;
     }
 
-    public int getWeekendDiscount(boolean isWeekend, Order order) {
-        if (isWeekend) {
-            return order.getMenuCategoryCount(MAIN) * WEEKEND_DISCOUNT_UNIT.getAmount();
+    private int getWeekendDiscount() {
+        if (date.isWeekend()) {
+            return order.getCategoryCount(MAIN) * WEEKEND.getUnitAmount();
         }
         return 0;
     }
 
-    public int getSpecialDiscount(boolean hasStar) {
-        if (hasStar) {
-            return SPECIAL_DISCOUNT.getAmount();
+    private int getSpecialDiscount() {
+        if (date.hasStar()) {
+            return SPECIAL.getInitialAmount();
         }
         return 0;
     }
 
-    public int getGiftAmount(boolean canGetGift) {
-        if (canGetGift) {
-            return GIFT_BENEFIT.getAmount();
+    private int getGiftAmount() {
+        if (order.canGetGift()) {
+            return GIFT.getInitialAmount();
         }
         return 0;
     }
