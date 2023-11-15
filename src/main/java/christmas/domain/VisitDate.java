@@ -7,8 +7,8 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class VisitDate {
-    public static final int EVENT_YEAR = 2023;
-    public static final int EVENT_MONTH = 12;
+    private static final int EVENT_YEAR = 2023;
+    private static final int EVENT_MONTH = 12;
     private static final VisitDate FIRST_DATE = new VisitDate(1);
     private static final VisitDate CHRISTMAS = new VisitDate(25);
 

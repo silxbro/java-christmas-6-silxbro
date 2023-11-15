@@ -22,14 +22,7 @@ public class Benefit {
     }
 
     public Map<Discount, Integer> getBenefitBoard() {
-        Map<Discount, Integer> board = new HashMap<>();
-        board.put(XMAS, getDdayXmasDiscount());
-        board.put(WEEKDAY, getWeekdayDiscount());
-        board.put(WEEKEND, getWeekendDiscount());
-        board.put(SPECIAL, getSpecialDiscount());
-        board.put(GIFT, getGiftAmount());
-
-        return board;
+        return Map.of(XMAS, getDdayXmasDiscount(), WEEKDAY, getWeekdayDiscount(), WEEKEND, getWeekendDiscount(), SPECIAL, getSpecialDiscount(), GIFT, getGiftAmount());
     }
 
     public int getBenefitedTotalAmount() {
