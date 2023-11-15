@@ -3,14 +3,14 @@ package christmas.validation;
 import christmas.constant.Error;
 import christmas.constant.Menu;
 
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static christmas.constant.MenuCategory.*;
 
 public class MenuBoard {
-    private static final int COUNT_LIMIT = 20;
+    private static final int MAX_COUNT = 20;
     private final Map<Menu, Integer> menuBoard;
 
     public MenuBoard(Map<Menu, Integer> menuBoard) {
@@ -20,8 +20,9 @@ public class MenuBoard {
     public static Map<Menu, Integer> validate(String orderString) {
         Map<Menu, Integer> board = new HashMap<>();
         try {
-            Arrays.stream(orderString.split(","))
+            List.of(orderString.split(","))
                     .forEach(order -> putInMap(order, board));
+
             validateOnlyDrink(board);
             validateCount(board);
             return board;
@@ -33,7 +34,9 @@ public class MenuBoard {
     private static void putInMap(String input, Map<Menu, Integer> board) {
         Menu menu = Menu.of(input.split("-")[0]);
         int count = Integer.parseInt(input.split("-")[1]);
+
         validateDuplicates(menu, board);
+        validateRange(count);
         board.put(menu, count);
     }
 
@@ -43,14 +46,21 @@ public class MenuBoard {
         }
     }
 
+    private static void validateRange(int number) {
+        if (number <= 0) {
+            throw new IllegalArgumentException(Error.INVALID_ORDER.getMessage());
+        }
+    }
+
     private static void validateOnlyDrink(Map<Menu, Integer> board) {
         if (board.keySet().stream().allMatch(key -> key.getType().equals(DRINK))) {
             throw new IllegalArgumentException(Error.INVALID_ORDER.getMessage());
         }
     }
+
     private static void validateCount(Map<Menu, Integer> board) {
         int totalCount = board.values().stream().mapToInt(Integer::intValue).sum();
-        if (totalCount > COUNT_LIMIT) {
+        if (totalCount > MAX_COUNT) {
             throw new IllegalArgumentException(Error.INVALID_ORDER.getMessage());
         }
     }
