@@ -25,6 +25,7 @@ public class MenuBoard {
 
             validateOnlyDrink(board);
             validateCount(board);
+
             return board;
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             throw new IllegalArgumentException(Error.INVALID_ORDER.getMessage());
@@ -37,6 +38,7 @@ public class MenuBoard {
 
         validateDuplicates(menu, board);
         validateRange(count);
+
         board.put(menu, count);
     }
 
