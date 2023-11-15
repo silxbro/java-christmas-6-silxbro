@@ -18,12 +18,8 @@ public class MenuBoard {
     }
 
     public static Map<Menu, Integer> validate(String orderString) {
-        Map<Menu, Integer> board;
         try {
-            board = stringToMap(orderString);
-            validateOnlyDrink(board);
-            validateCount(board);
-            return board;
+            return stringToMap(orderString);
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             throw new IllegalArgumentException(Error.INVALID_ORDER.getMessage());
         }
@@ -33,6 +29,10 @@ public class MenuBoard {
         Map<Menu, Integer> board = new HashMap<>();
         List.of(string.split(","))
                 .forEach(order -> putInMap(order, board));
+
+        validateOnlyDrink(board);
+        validateCount(board);
+
         return board;
     }
 
