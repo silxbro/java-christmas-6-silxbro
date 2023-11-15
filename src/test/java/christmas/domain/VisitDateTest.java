@@ -1,6 +1,5 @@
-package christmas;
+package christmas.domain;
 
-import christmas.domain.VisitDate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -8,13 +7,19 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VisitDateTest {
+    @DisplayName("getDayNumber 메소드 사용시 해당 날짜의 일수 반환")
+    @ParameterizedTest
+    @CsvSource(value = {"5:5", "10:10", "15:15", "20:20", "25:25"}, delimiter = ':')
+    void getDayNumber_test(int input, int expected) {
+        int actualValue = new VisitDate(input).getDayNumber();
+        assertEquals(expected, actualValue);
+    }
 
     @DisplayName("isAfterXmas 메소드 사용시 크리스마스 이후 날짜 여부 반환")
     @ParameterizedTest
     @CsvSource(value = {"10:false", "25:false", "27:true", "31:true"}, delimiter = ':')
     void isAfterXmas_test(int input, boolean expected) {
-        VisitDate visitDate = new VisitDate(input);
-        boolean actualValue = visitDate.isAfterXmas();
+        boolean actualValue = new VisitDate(input).isAfterXmas();
         assertEquals(expected, actualValue);
     }
 
@@ -22,8 +27,7 @@ public class VisitDateTest {
     @ParameterizedTest
     @CsvSource(value = {"1:0", "10:9", "20:19", "25:24", "30:29"}, delimiter = ':')
     void getDaysSinceDecember1st_test(int input, int expected) {
-        VisitDate visitDate = new VisitDate(input);
-        int actualValue = visitDate.getDaysSinceDecember1st();
+        int actualValue = new VisitDate(input).getDaysSinceDecember1st();
         assertEquals(expected, actualValue);
     }
 
@@ -31,8 +35,7 @@ public class VisitDateTest {
     @ParameterizedTest
     @CsvSource(value = {"8:true", "12:false", "16:true", "20:false", "25:false"}, delimiter = ':')
     void isWeekend_test(int input, boolean expected) {
-        VisitDate visitDate = new VisitDate(input);
-        boolean actualValue = visitDate.isWeekend();
+        boolean actualValue = new VisitDate(input).isWeekend();
         assertEquals(expected, actualValue);
     }
 
@@ -40,8 +43,7 @@ public class VisitDateTest {
     @ParameterizedTest
     @CsvSource(value = {"5:false", "10:true", "15:false", "25:true", "30:false"}, delimiter = ':')
     void hasStar_test(int input, boolean expected) {
-        VisitDate visitDate = new VisitDate(input);
-        boolean actualValue = visitDate.hasStar();
+        boolean actualValue = new VisitDate(input).hasStar();
         assertEquals(expected, actualValue);
     }
 }
