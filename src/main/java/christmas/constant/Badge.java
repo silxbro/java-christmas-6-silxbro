@@ -1,42 +1,30 @@
 package christmas.constant;
 
 import java.util.Arrays;
-import java.util.Comparator;
 
 public enum Badge {
     SANTA("산타", 20_000),
-    STAR("별", 5_000),
     TREE("트리", 10_000),
-    NO_BADGE("없음", 0);
+    STAR("별", 5_000),
+    NO_BADGE("없음", 0),
+    ;
 
-    private final String korean;
+    private final String name;
     private final int amountCondition;
 
-    Badge(String korean, int amountCondition) {
-        this.korean = korean;
+    Badge(String name, int amountCondition) {
+        this.name = name;
         this.amountCondition = amountCondition;
     }
 
     public static Badge of(int amount) {
-        Badge[] badges = Badge.values();
-        Arrays.sort(badges, badgeComparator().reversed());
-        for (Badge badge : badges) {
-            if (amount >= badge.amountCondition) {
-                return badge;
-            }
-        }
-        return Badge.NO_BADGE;
+        return Arrays.stream(values())
+                .filter(badge -> amount >= badge.amountCondition)
+                .findFirst()
+                .orElse(NO_BADGE);
     }
 
-    public String getKorean() {
-        return this.korean;
-    }
-
-    public int getAmountCondition() {
-        return this.amountCondition;
-    }
-
-    public static Comparator<Badge> badgeComparator() {
-        return Comparator.comparingInt(Badge::getAmountCondition);
+    public String getName() {
+        return this.name;
     }
 }
