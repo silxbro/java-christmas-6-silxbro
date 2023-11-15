@@ -1,13 +1,11 @@
 package christmas.domain;
 
 import christmas.constant.Menu;
-import christmas.domain.Order;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
