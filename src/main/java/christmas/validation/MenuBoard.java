@@ -18,18 +18,22 @@ public class MenuBoard {
     }
 
     public static Map<Menu, Integer> validate(String orderString) {
-        Map<Menu, Integer> board = new HashMap<>();
+        Map<Menu, Integer> board;
         try {
-            List.of(orderString.split(","))
-                    .forEach(order -> putInMap(order, board));
-
+            board = stringToMap(orderString);
             validateOnlyDrink(board);
             validateCount(board);
-
             return board;
         } catch (NumberFormatException | ArrayIndexOutOfBoundsException e) {
             throw new IllegalArgumentException(Error.INVALID_ORDER.getMessage());
         }
+    }
+
+    private static Map<Menu, Integer> stringToMap(String string) {
+        Map<Menu, Integer> board = new HashMap<>();
+        List.of(string.split(","))
+                .forEach(order -> putInMap(order, board));
+        return board;
     }
 
     private static void putInMap(String input, Map<Menu, Integer> board) {

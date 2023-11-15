@@ -2,7 +2,6 @@ package christmas.domain;
 
 import christmas.constant.Discount;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import static christmas.constant.Discount.*;
