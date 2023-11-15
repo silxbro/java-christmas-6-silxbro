@@ -10,20 +10,19 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import static christmas.constant.Menu.*;
-import static christmas.domain.VisitDate.*;
 
 public class OutputView {
     private static final String START_MESSAGE = "안녕하세요! 우테코 식당 12월 이벤트 플래너입니다.";
-    private static final String RESULT_HEADLINE_MESSAGE = "12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!\n";
+    private static final String RESULT_HEADLINE_MESSAGE = "12월 %d일에 우테코 식당에서 받을 이벤트 혜택 미리 보기!%n";
     private static final String ORDER_HEADLINE = "\n<주문 메뉴>";
-    private static final String MENU_LIST = "%s %d개\n";
-    private static final String TOTAL_AMOUNT = "\n<할인 전 총주문 금액>\n%,d원\n";
-    private static final String GIFT_AMOUNT = "\n<증정 메뉴>\n%s";
-    private static final String BENEFIT_LIST = "\n<혜택 내역>\n%s";
-    private static final String EACH_BENEFIT = "%s: %,d원\n";
-    private static final String TOTAL_BENEFIT = "\n<총혜택 금액>\n%,d원\n";
-    private static final String BENEFITED_AMOUNT = "\n<할인 후 예상 결제 금액>\n%,d원\n";
-    private static final String EVENT_BADGE = "\n<12월 이벤트 배지>\n%s";
+    private static final String MENU_LIST = "%s %d개%n";
+    private static final String TOTAL_AMOUNT = "\n<할인 전 총주문 금액>%n%,d원%n";
+    private static final String GIFT_AMOUNT = "\n<증정 메뉴>%n%s";
+    private static final String BENEFIT_LIST = "\n<혜택 내역>%n%s";
+    private static final String EACH_BENEFIT = "%s: %,d원%n";
+    private static final String TOTAL_BENEFIT = "\n<총혜택 금액>%n%,d원%n";
+    private static final String BENEFITED_AMOUNT = "\n<할인 후 예상 결제 금액>%n%,d원%n";
+    private static final String EVENT_BADGE = "\n<12월 이벤트 배지>%n%s";
     private static final String NO_BENEFIT = "없음\n";
 
     public void printStartMessage() {
