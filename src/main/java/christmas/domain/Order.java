@@ -19,16 +19,16 @@ public class Order {
         return this.menuBoard;
     }
 
+    public int getTotalAmount() {
+        return menuBoard.entrySet().stream()
+                .mapToInt(entry -> entry.getKey().getPrice() * entry.getValue())
+                .sum();
+    }
+
     public int getCategoryCount(MenuCategory category) {
         return menuBoard.entrySet().stream()
                 .filter(entry -> entry.getKey().getType() == category)
                 .mapToInt(Map.Entry::getValue)
-                .sum();
-    }
-
-    public int getTotalAmount() {
-        return menuBoard.entrySet().stream()
-                .mapToInt(entry -> entry.getKey().getPrice() * entry.getValue())
                 .sum();
     }
 
