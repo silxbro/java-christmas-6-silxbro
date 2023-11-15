@@ -26,7 +26,7 @@ public class BenefitTest {
         menuBoard3 = Arrays.stream(Menu.values()).collect(Collectors.toMap(menu -> menu, menu -> 1));
     }
 
-    @DisplayName("getTotalBenefit 메소드 사용시 총혜택 금액 리턴")
+    @DisplayName("getTotalBenefit 메소드 사용시 총혜택 금액 반환")
     @Nested
     class getTotalBenefit_test {
         @Test
@@ -49,7 +49,7 @@ public class BenefitTest {
 
     }
 
-    @DisplayName("getBenefitBoard 메소드 사용시 각 내역의 혜택 금액 리턴")
+    @DisplayName("getBenefitBoard 메소드 사용시 각 내역의 혜택 금액 반환")
     @Nested
     class getBenefitBoard_test {
         @Test
@@ -75,7 +75,7 @@ public class BenefitTest {
         }
     }
 
-    @DisplayName("getBenefitedTotalAmount 메소드 사용시 할인 후 예상 결제 금액 리턴")
+    @DisplayName("getBenefitedTotalAmount 메소드 사용시 할인 후 예상 결제 금액 반환")
     @Nested
     class getBenefitedTotalAmount_test {
         @Test
