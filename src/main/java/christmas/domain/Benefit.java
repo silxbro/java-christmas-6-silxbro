@@ -18,14 +18,17 @@ public class Benefit {
     }
 
     public int getTotalBenefit() {
+        return getTotalDiscount() + getGiftAmount();
+    }
+    private int getTotalDiscount() {
         if (order.canGetBenefit()) {
-            return getDdayXmasDiscount() + getWeekdayDiscount() + getWeekendDiscount() + getSpecialDiscount() + getGiftAmount();
+            return getDdayXmasDiscount() + getWeekdayDiscount() + getWeekendDiscount() + getSpecialDiscount();
         }
         return 0;
     }
 
     public int getBenefitedTotalAmount() {
-        return order.getTotalAmount() - getTotalBenefit();
+        return order.getTotalAmount() - getTotalDiscount();
     }
 
     public Map<Discount, Integer> getBenefitBoard() {
