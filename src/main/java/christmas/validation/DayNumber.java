@@ -13,10 +13,6 @@ public enum DayNumber {
         this.dayNumber = dayNumber;
     }
 
-    public int getDayNumber() {
-        return this.dayNumber;
-    }
-
     public static int validateRange(int number) {
         if (!isInRange(number)) {
             throw new IllegalArgumentException(Error.INVALID_DATE.getMessage());

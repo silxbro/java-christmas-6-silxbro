@@ -4,15 +4,16 @@ public enum MenuCategory {
     APPETIZER("애피타이저"),
     MAIN("메인"),
     DESERT("디저트"),
-    DRINK("음료");
+    DRINK("음료"),
+    ;
 
-    private final String korean;
+    private final String name;
 
-    MenuCategory(String korean) {
-        this.korean = korean;
+    MenuCategory(String name) {
+        this.name = name;
     }
 
-    public String getKorean() {
-        return this.korean;
+    public String getName() {
+        return this.name;
     }
 }

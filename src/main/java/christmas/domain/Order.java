@@ -5,18 +5,22 @@ import christmas.constant.MenuCategory;
 
 import java.util.Map;
 
-import static christmas.constant.Amount.*;
-
 public class Order {
+    private static final int BENEFIT_CONDITION = 10000;
+    private static final int GIFT_CONDITION = 120000;
     private final Map<Menu, Integer> menuBoard;
 
     public Order(Map<Menu, Integer> menuBoard) {
         this.menuBoard = menuBoard;
     }
 
-    public int getMenuCategoryCount(MenuCategory menuCategory) {
+    public Map<Menu, Integer> getMenuBoard() {
+        return this.menuBoard;
+    }
+
+    public int getCategoryCount(MenuCategory category) {
         return menuBoard.entrySet().stream()
-                .filter(entry -> entry.getKey().getType() == menuCategory)
+                .filter(entry -> entry.getKey().getType() == category)
                 .mapToInt(Map.Entry::getValue)
                 .sum();
     }
@@ -28,10 +32,10 @@ public class Order {
     }
 
     public boolean canGetBenefit() {
-        return (getTotalAmount() >= TOTAL_BENEFIT_CONDITION.getAmount());
+        return getTotalAmount() >= BENEFIT_CONDITION;
     }
 
     public boolean canGetGift() {
-        return (getTotalAmount() >= GIFT_BENEFIT_CONDITION.getAmount());
+        return getTotalAmount() >= GIFT_CONDITION;
     }
 }

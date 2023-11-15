@@ -7,14 +7,18 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 public class VisitDate {
-    private static final int EVENT_YEAR = 2023;
-    private static final int EVENT_MONTH = 12;
+    public static final int EVENT_YEAR = 2023;
+    public static final int EVENT_MONTH = 12;
     private static final VisitDate FIRST_DATE = new VisitDate(1);
     private static final VisitDate CHRISTMAS = new VisitDate(25);
     private final LocalDate date;
 
-    public VisitDate(int day) {
-        this.date = LocalDate.of(EVENT_YEAR, EVENT_MONTH, day);
+    public VisitDate(int dayNumber) {
+        this.date = LocalDate.of(EVENT_YEAR, EVENT_MONTH, dayNumber);
+    }
+
+    public int getDayNumber() {
+        return this.date.getDayOfMonth();
     }
 
     public boolean isAfterXmas() {

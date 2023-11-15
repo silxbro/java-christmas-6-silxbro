@@ -2,11 +2,12 @@ package christmas.validation;
 
 import christmas.constant.Error;
 import christmas.constant.Menu;
-import christmas.constant.MenuCategory;
 
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+import static christmas.constant.MenuCategory.*;
 
 public class MenuBoard {
     private static final int COUNT_LIMIT = 20;
@@ -43,7 +44,7 @@ public class MenuBoard {
     }
 
     private static void validateOnlyDrink(Map<Menu, Integer> board) {
-        if (board.keySet().stream().allMatch(key -> key.getType() == MenuCategory.DRINK)) {
+        if (board.keySet().stream().allMatch(key -> key.getType().equals(DRINK))) {
             throw new IllegalArgumentException(Error.INVALID_ORDER.getMessage());
         }
     }

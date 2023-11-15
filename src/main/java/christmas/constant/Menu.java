@@ -16,7 +16,8 @@ public enum Menu {
     ICE_CREAM(DESERT, "아이스크림", 5_000),
     ZERO_COKE(DRINK, "제로콜라", 3_000),
     RED_WINE(DRINK, "레드와인", 60_000),
-    CHAMPAGNE(DRINK, "샴페인", 25_000);
+    CHAMPAGNE(DRINK, "샴페인", 25_000),
+    ;
 
     private final MenuCategory type;
     private final String name;
@@ -29,7 +30,7 @@ public enum Menu {
     }
 
     public static Menu of(String name) {
-        return Arrays.stream(Menu.values())
+        return Arrays.stream(values())
                 .filter(menu -> menu.name.equals(name))
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException(Error.INVALID_ORDER.getMessage()));
