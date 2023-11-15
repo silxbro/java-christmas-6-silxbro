@@ -8,6 +8,7 @@ import java.util.Map;
 public class Order {
     private static final int BENEFIT_CONDITION = 10000;
     private static final int GIFT_CONDITION = 120000;
+
     private final Map<Menu, Integer> menuBoard;
 
     public Order(Map<Menu, Integer> menuBoard) {

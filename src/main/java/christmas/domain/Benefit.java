@@ -20,16 +20,6 @@ public class Benefit {
     public int getTotalBenefit() {
         return getTotalDiscount() + getGiftAmount();
     }
-    private int getTotalDiscount() {
-        if (order.canGetBenefit()) {
-            return getDdayXmasDiscount() + getWeekdayDiscount() + getWeekendDiscount() + getSpecialDiscount();
-        }
-        return 0;
-    }
-
-    public int getBenefitedTotalAmount() {
-        return order.getTotalAmount() - getTotalDiscount();
-    }
 
     public Map<Discount, Integer> getBenefitBoard() {
         Map<Discount, Integer> board = new HashMap<>();
@@ -40,6 +30,17 @@ public class Benefit {
         board.put(GIFT, getGiftAmount());
 
         return board;
+    }
+
+    public int getBenefitedTotalAmount() {
+        return order.getTotalAmount() - getTotalDiscount();
+    }
+
+    private int getTotalDiscount() {
+        if (order.canGetBenefit()) {
+            return getDdayXmasDiscount() + getWeekdayDiscount() + getWeekendDiscount() + getSpecialDiscount();
+        }
+        return 0;
     }
 
     private int getDdayXmasDiscount() {

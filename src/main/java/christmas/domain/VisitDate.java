@@ -11,6 +11,7 @@ public class VisitDate {
     public static final int EVENT_MONTH = 12;
     private static final VisitDate FIRST_DATE = new VisitDate(1);
     private static final VisitDate CHRISTMAS = new VisitDate(25);
+
     private final LocalDate date;
 
     public VisitDate(int dayNumber) {
